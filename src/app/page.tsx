@@ -47,7 +47,6 @@ export default function Home() {
         setTotalCost(outcomes.reduce((sum, outcome) => sum + outcome.cost, 0));
     }, [outcomes]);
 
-
     const addOutcome = () => {
         if (
             newOutcome.cost !== 0 &&
@@ -76,30 +75,43 @@ export default function Home() {
     };
 
     return (
-        <>
-            <h1 className="">Finance</h1>
-            <div>
+        <div className="w-1/2 mx-auto mt-8 p-6 bg-gray-900 rounded-lg shadow-lg text-gray-100">
+            <h1 className="text-2xl font-bold text-lime-400 mb-4 text-center">Finance</h1>
+            <div className="flex flex-wrap gap-2 mb-4">
                 <input
                     type="text"
-                    placeholder="name"
+                    placeholder="Expense name"
                     value={newOutcome.name}
                     onChange={e => setNewOutcome({ ...newOutcome, name: e.target.value })}
+                    className="px-2 py-1 rounded bg-gray-800 border border-gray-700 text-gray-100"
                 />
                 <input
                     type="date"
                     value={newOutcome.date}
                     onChange={e => setNewOutcome({ ...newOutcome, date: e.target.value })}
+                    className="px-2 py-1 rounded bg-gray-800 border border-gray-700 text-gray-100"
                 />
                 <input
                     type="number"
-                    placeholder="Cost"
+                    placeholder="Cost (VND)"
                     value={newOutcome.cost === 0 ? "" : newOutcome.cost}
                     onChange={e => setNewOutcome({ ...newOutcome, cost: Number(e.target.value) })}
+                    className="px-2 py-1 rounded bg-gray-800 border border-gray-700 text-gray-100"
                 />
-                <button onClick={addOutcome}>Add</button>
-                <Outcomes outcomes={outcomes} removeHandler={removeHandler} />
             </div>
-            <h2>Total cost: {totalCost}</h2>
-        </>
+            <div className="flex justify-center mb-4">
+                <button
+                    onClick={addOutcome}
+                    className="px-3 py-1 rounded bg-lime-400 text-gray-900 font-bold hover:bg-lime-300"
+                >
+                    Add
+                </button>
+            </div>
+            <div className="text-center text-lime-400 text-lg font-semibold mt-6">
+                Total expense: {totalCost.toLocaleString()} (VND)
+            </div>
+
+            <Outcomes outcomes={outcomes} removeHandler={removeHandler} />
+        </div>
     );
 }

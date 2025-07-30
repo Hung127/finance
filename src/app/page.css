@@ -1,0 +1,76 @@
+.container {
+  max-width: 480px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #181a1b;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  color: #eaeaea;
+  font-family: system-ui, sans-serif;
+}
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #8aff80;
+  text-align: center;
+}
+.inputs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+input[type="text"], input[type="date"], input[type="number"] {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #333;
+  background: #222;
+  color: #eaeaea;
+  width: 130px;
+}
+button {
+  padding: 0.5rem 1rem;
+  background: #8aff80;
+  color: #222;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button:hover {
+  background: #6cd46c;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.outcomeItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #333;
+}
+.outcomeItem span {
+  min-width: 80px;
+  display: inline-block;
+}
+.outcomeItem button {
+  margin-left: 0.25rem;
+  background: #ff6666;
+  color: #fff;
+}
+.outcomeItem button:last-child {
+  background: #ffd966;
+  color: #333;
+}
+.total {
+  text-align: right;
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  color: #8aff80;
+  font-weight: bold;
+}
