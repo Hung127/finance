@@ -35,7 +35,9 @@ export default function Home() {
     useEffect(() => {
         const saveOutcomes = localStorage.getItem("outcomes");
         if (saveOutcomes) {
-            setOutcome(JSON.parse(saveOutcomes));
+            const parsed = JSON.parse(saveOutcomes);
+            setOutcome(parsed);
+            setOutcome(sortByDateDesc(parsed));
             setTotalCost(outcomes.reduce((sum, outcome) => sum + outcome.cost, 0));
         }
     }, []);
@@ -52,17 +54,24 @@ export default function Home() {
             newOutcome.name.trim() !== "" &&
             newOutcome.date.trim() !== ""
         ) {
-            setOutcome([
+            // sort first
+            const updated = sortByDateDesc([
                 ...outcomes,
                 {
                     ...newOutcome,
                     id: Date.now(),
                 },
             ]);
+            // update value
+            setOutcome(updated);
         }
     };
 
+    const sortByDateDesc = (outcomes: Outcome[]) =>
+        outcomes.slice().sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
     const removeHandler = (id: Number) => {
+        setOutcome(sortByDateDesc(outcomes))
         setOutcome(outcomes.filter(o => o.id !== id));
     };
 
